@@ -10,25 +10,32 @@
 {% endblock %}
 
 {% block content %}
+<div class="container">
     <div id="app-visualizer">
+
         <!-- Navbar -->
         <b-navbar type="dark" variant="secondary">
-            <b-navbar-brand tag="h1">Decide</b-navbar-brand>
+            <b-navbar-brand tag="h1" style="margin-left: 2%;">Decide, una app para sus votaciones y resultados</b-navbar-brand>
         </b-navbar>
 
-        <div class="voting container">
-            <h1>[[ voting.id ]] - [[ voting.name ]]</h1>
+        
 
-            <h2 v-if="!voting.start_date">Votación no comenzada</h2>
-            <h2 v-else-if="!voting.end_date">Votación en curso</h2>
+        
+        <h1>[[ voting.name ]]</h1>
+        <div class="voting container">
+            
+            <h3 >[[ voting.id ]] - [[ voting.name ]]</h3>
+
+            <h2 v-if="!voting.start_date">La siguiente votación sobre "[[ voting.name ]]" aún no ha comenzado, porfavor espere a que esta comienza para tener derecho a votar en ella. Muchas gracias.</h2>
+            <h2 v-else-if="!voting.end_date">La siguiente votación sobre "[[ voting.name ]]" se encuentra en curso y tiene derecho a votar en ella por lo que, tras tomar su decisión podrá votar.</h2>
             <div v-else>
-                <h2 class="heading">Resultados:</h2>
+                <h2 class="heading">La siguiente votación sobre "[[ voting.name ]]" ya ha finalizado, aquí puede ver los resultados que esta ha tenido. Al haber finalizado ya no puede ejercer su voto. Muchas gracias</h2>
 
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>Opción</th>
-                            <th>Puntuación</th>
+                            <th>Puntuación</th>La siguiente votación sobre "[[ voting.name ]]" aún no ha comenzado, porfavor espere a que esta comienza para tener derecho a votar en ella. Muchas gracias.
                             <th>Votos</th>
                         </tr>
                     </thead>
@@ -43,7 +50,18 @@
             </div>
 
         </div>
-    </div>
+        <p id="holder">
+            La votación que está usted esta visualizando tiene como temática"[[ voting.name ]]".
+            Si se encuentra interesado sobre dicho tema puede buscar más información en una página
+            externa a decide, ya que aquí solo trataremos la puntuación y los votos que las correspondientes
+            opciones de votado obtengan. Reincidiendo en que la aplicación web decide únicamente es un sistema
+            mediante el que tramitar votos.  
+               
+        </p>
+</div>  
+
+        
+    </div>     
 {% endblock %}
 
 {% block extrabody %}
