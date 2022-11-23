@@ -7,7 +7,7 @@ from base import mods
 
 
 # TODO: check permissions and census
-class BoothView(TemplateView):
+class BoothViewIng(TemplateView):
     template_name = 'booth/booth.html'
 
     def get_context_data(self, **kwargs):
