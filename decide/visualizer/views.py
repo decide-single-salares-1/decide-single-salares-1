@@ -45,9 +45,11 @@ class VisualizerView(TemplateView):
             #Creamos la grafica de barras utilizando 'paises' como eje X y 'ventas' como eje y.
             plt.bar(opci, votos)
             plt.savefig('barras_simple.png')
-
+            
             fig, ax = plt.subplots()
-            ax.pie(votos)
+            ax.pie(votos,labels=opci, autopct="%0.1f %%")
+            plt.axis("equal")
+            ax.set_title(r[0]["question"]["desc"])
             plt.savefig('pie_simple.png')
             with open('barras_simple.png', 'rb') as photo_file:
                             bot.sendPhoto(chat_id=chat_id,
@@ -57,7 +59,7 @@ class VisualizerView(TemplateView):
             with open('pie_simple.png', 'rb') as photo_file:
                             bot.sendPhoto(chat_id=chat_id,
                                 photo=photo_file,
-                                caption='Aqui esta una grafica en tarta de la votacion')
+                                caption='Aqui esta una grafica de pastel de la votacion')
             # Crear un nuevo documento
             doc = aw.Document()
             # Crear un generador de documentos
