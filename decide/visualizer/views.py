@@ -9,6 +9,7 @@ import numpy as np
 
 import telegram
 
+import aspose.words as aw
 from base import mods
 
 
@@ -46,6 +47,15 @@ class VisualizerView(TemplateView):
                                 photo=photo_file,
                                 caption='Aqui esta una grafica de la votacion')
             
+            # Crear un nuevo documento
+            doc = aw.Document()
+            # Crear un generador de documentos
+            builder = aw.DocumentBuilder(doc)
+            # Insertar imagen en el documento
+            builder.insert_image("barras_simple.png")
+
+            # Guardar como pdf
+            doc.save("barras.pdf")
             
         
         
