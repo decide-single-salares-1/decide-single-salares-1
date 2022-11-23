@@ -70,7 +70,7 @@ class VisualizerView(TemplateView):
             # Insertar imagen en el documento
            
             builder.insert_image("barras_simple.png")
-            
+            builder.insert_image("pie_simple.png")
             # Guardar como pdf
             doc.save("barras.pdf")
             
