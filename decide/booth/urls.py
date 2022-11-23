@@ -1,9 +1,9 @@
 from django.urls import path
-from .views import BoothView, BoothViewESP, BoothViewALE
+from .views import BoothViewIng, BoothViewESP, BoothViewALE
 
 
 urlpatterns = [
-    path('<int:voting_id>/', BoothView.as_view()),
+    path('<int:voting_id>/', BoothViewIng.as_view()),
     path('<int:voting_id>/esp', BoothViewESP.as_view()),
     path('<int:voting_id>/ale', BoothViewALE.as_view()),
 ]
