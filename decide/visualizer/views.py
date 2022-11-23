@@ -7,7 +7,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 
-
+import telegram
 
 from base import mods
 
@@ -17,10 +17,12 @@ class VisualizerView(TemplateView):
 
     def get_context_data(self, **kwargs):
     
-        
+        bot_token = '5951418263:AAFhShQy3yYuk2SCjAF_E2YM6IO5XwYVqn4'
+        chat_id = '-1001777911940'
+        bot = telegram.Bot(token=bot_token)
         context = super().get_context_data(**kwargs)
         vid = kwargs.get('voting_id', 0)
-
+        print(vid)
         try:
             r = mods.get('voting', params={'id': vid})
             
@@ -39,7 +41,10 @@ class VisualizerView(TemplateView):
             #Creamos la grafica de barras utilizando 'paises' como eje X y 'ventas' como eje y.
             plt.bar(opci, votos)
             plt.savefig('barras_simple.png')
-
+            with open('barras_simple.png', 'rb') as photo_file:
+                            bot.sendPhoto(chat_id=chat_id,
+                                photo=photo_file,
+                                caption='Aqui esta una grafica de la votacion')
             
             
         
