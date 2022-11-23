@@ -313,6 +313,27 @@ function increase2() {
 
         }   
     </script>
+    <script> 
+    function mostrar(){
+        document.getElementById("acc").style.display= "block";
+    }
+    function ocultar(){
+        document.getElementById("acc").style.display= "none";
+    }
+    function ambas(){
+        var  acc=  document.getElementById("acc");
+        if(acc.style.display == "none"){
+            mostrar();
+            document.getElementById("acc").value= "Mostrar opciones de accesibilidad";
+
+        }else{
+            ocultar();
+            document.getElementById("acc").value= "Ocultar opciones de accesibilidad";
+
+        }
+    }
+    
+    </script>
 
 
 <button class="btn btn-primary" id="boton" onclick="ambas();
