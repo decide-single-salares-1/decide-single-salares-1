@@ -7,4 +7,3 @@ pip install -r requirements.txt
 
 python ./decide/manage.py collectstatic --no-input
 python ./decide/manage.py migrate
-python ./decide/manage.py tailwind build
