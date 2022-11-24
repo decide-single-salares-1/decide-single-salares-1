@@ -20,9 +20,26 @@
             <h1>[[ voting.id ]] - [[ voting.name ]]</h1>
 
             <h2 v-if="!voting.start_date">Votación no comenzada</h2>
-            <h2 v-else-if="!voting.end_date">Votación en curso</h2>
-            <div v-else>
-                <h2 class="heading">Resultados:</h2>
+            <h2 v-else-if="!voting.end_date">Votación en curso
+                <div>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Voto</th>
+                                <th>Participation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>[[ inforealtime.total_number_of_votes ]]</td>
+                                <th>[[ inforealtime.participation ]]</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                   </div>
+                </h2>
+                <div v-else>
+                    <h2 class="heading">Resultados:</h2>
 
                 <table class="table table-bordered table-striped">
                     <thead>
@@ -44,6 +61,7 @@
 
         </div>
     </div>
+
 {% endblock %}
 
 {% block extrabody %}
@@ -58,7 +76,7 @@
             delimiters: ['[[', ']]'],
             el: '#app-visualizer',
             data: {
-                voting: voting
+                voting: voting,
             }
         })
     </script>
