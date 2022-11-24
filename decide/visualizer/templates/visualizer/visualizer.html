@@ -62,6 +62,10 @@
         </div>
     </div>
 
+    <div>
+        <h1>[[ context.inforealtime ]]</h1>
+    </div>
+
 {% endblock %}
 
 {% block extrabody %}
@@ -72,11 +76,13 @@
 
     <script>
         var voting = {{voting|safe}};
+        var inforealtime = {{inforealtime|safe}};
         var app = new Vue({
             delimiters: ['[[', ']]'],
             el: '#app-visualizer',
             data: {
                 voting: voting,
+                inforealtime: inforealtime
             }
         })
     </script>
