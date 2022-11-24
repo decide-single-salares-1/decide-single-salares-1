@@ -16,7 +16,7 @@
             <b-navbar-brand tag="h1">Decide</b-navbar-brand>
                 <b-navbar-nav class="ml-auto" v-if="!signup">
                     <b-nav-item href="#" v-on:click="decideLogout">
-                        {% trans "logout" %}
+                        {% trans "cerrar sesión" %}
                     </b-nav-item>
                 </b-navbar-nav>
         </b-navbar>
@@ -30,7 +30,7 @@
 
             <!-- Register -->
             <b-form @submit="onSubmitLogin" v-if="signup">
-                <b-form-group label="{% trans "Username" %}" label-for="username">
+                <b-form-group label="{% trans "Usuario" %}" label-for="username">
                     <b-form-input
                         id="username"
                         type="text"
@@ -38,7 +38,7 @@
                         autocomplete="username"
                         required />
                 </b-form-group>
-                <b-form-group label="{% trans "Password" %}" label-for="password">
+                <b-form-group label="{% trans "Contraseña" %}" label-for="password">
                     <b-form-input
                         id="password"
                         type="password"
@@ -46,7 +46,7 @@
                         v-model="form.password"
                         required />
                 </b-form-group>
-                <b-button type="submit" variant="primary">{% trans "Login" %}</b-button>
+                <b-button type="submit" variant="primary">{% trans "Iniciar Sesión" %}</b-button>
             </b-form>
 
             <!-- Voting -->
@@ -61,23 +61,23 @@
                     </b-form-radio>
                 </b-form-group>
                 <b-button type="button" variant="primary" v-on:click="decideSend">
-                    {% trans "Vote" %}
+                    {% trans "Votar" %}
                 </b-button>
             </div>
-            <div>
-                <a href="esp">
-                    <b-button type="button" style="margin-top: 10px" variant="primary">
-                        translate to Spanish
-                    </b-button>
-                </a>
-            </div>
-            <div>
-                <a href="ale">
-                    <b-button type="button" style="margin-top: 10px" variant="primary">
-                        translate to German
-                    </b-button>
-                </a>
-            </div>
+                <div>
+                    <a href="ale">
+                        <b-button type="button" style="margin-top: 10px" variant="primary">
+                            Traducir a alemán
+                        </b-button>
+                    </a>
+                </div>
+                <div>
+                    <a href="ing">
+                        <b-button type="button" style="margin-top: 10px" variant="primary">
+                            Traducir a inglés
+                        </b-button>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

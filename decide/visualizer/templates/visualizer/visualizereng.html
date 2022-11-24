@@ -324,11 +324,11 @@ function increase2() {
         var  acc=  document.getElementById("acc");
         if(acc.style.display == "none"){
             mostrar();
-            document.getElementById("acc").value= "Mostrar opciones de accesibilidad";
+            document.getElementById("acc").value= "Show accessibility options";
 
         }else{
             ocultar();
-            document.getElementById("acc").value= "Ocultar opciones de accesibilidad";
+            document.getElementById("acc").value= "Hide accessibility options";
 
         }
     }
@@ -337,34 +337,34 @@ function increase2() {
 
 
 <button class="btn btn-primary" id="boton" onclick="ambas();
- " style="margin-top: 1%; margin-left:2%;margin-bottom:1%;">Opciones de accesibilidad </button>
+ " style="margin-top: 1%; margin-left:2%;margin-bottom:1%;">Accessibility options </button>
     <div class="accesibilidad" id="acc">
-            <h3 style="margin-left: 1.5%;">Accesibilidad</h3>
+            <h3 style="margin-left: 1.5%;">Accessibility</h3>
             
-            <p  style="margin-left: 2%;">Tamaño de fuente</p> 
+            <p  style="margin-left: 2%;">Font size</p> 
             <div class="size-slider">
                 
                 <input type="range" id="value" min="15" max = "35" value = "15" onchange="increase()"/>
             </div>
-         <p  style="margin-left: 2%;">Espacio entre líneas</p> 
+         <p  style="margin-left: 2%;">Space between lines</p> 
             <div class="size-slider2">
                 
                 <input type="range" id="value2" min="15" max = "35" onchange="increase2()"/>
             </div>
-        <p  style="margin-left: 2%;">Modo oscuro</p>
+        <p  style="margin-left: 2%;">Dark mode</p>
             <button class="switch" id="switch" onclick="myFunction()">
                 <span> <i class = "fas fa-sun"></i></span>
                 <span> <i class = "fas fa-moon"></i></span>
 
             </button>
-        <p  style="margin-left: 2%;">Modo escala de grises</p>
+        <p  style="margin-left: 2%;">Gray mode</p>
 
             <button class="switch2" id="switch2" onclick="myFunction2()">
                 <span> <i class = "fas fa-sun"></i></span>
                 <span> <i class = "fas fa-moon"></i></span>
 
             </button>
-        <p  style="margin-left: 2%;">Modo de alto contraste</p>
+        <p  style="margin-left: 2%;">High contrast mode</p>
 
             <button class="switch3" id="switch3" onclick="myFunction3()">
                 <span> <i class = "fas fa-sun"></i></span>
@@ -377,7 +377,7 @@ function increase2() {
 
         <!-- Navbar -->
         <b-navbar type="dark" variant="secondary">
-            <b-navbar-brand tag="h1" style="margin-left: 2%;">Decide, una app para sus votaciones y resultados</b-navbar-brand>
+            <b-navbar-brand tag="h1" style="margin-left: 2%;">Decide, an app for your votes and results</b-navbar-brand>
         </b-navbar>
 
         
@@ -388,17 +388,17 @@ function increase2() {
             
             <h3 >[[ voting.id ]] - [[ voting.name ]]</h3>
 
-            <h2 v-if="!voting.start_date">La siguiente votación sobre "[[ voting.name ]]" aún no ha comenzado, porfavor espere a que esta comienza para tener derecho a votar en ella. Muchas gracias.</h2>
-            <h2 v-else-if="!voting.end_date">La siguiente votación sobre "[[ voting.name ]]" se encuentra en curso y tiene derecho a votar en ella por lo que, tras tomar su decisión podrá votar.</h2>
+            <h2 v-if="!voting.start_date">The next vote about "[[ voting.name ]]" has not started yet, please wait until it starts to be eligible to vote on it. Thank you very much.</h2>
+            <h2 v-else-if="!voting.end_date">The next vote about "[[ voting.name ]]" is in progress and you have the right to vote on it, so after making your decision you can vote.</h2>
             <div v-else>
-                <h2 class="heading">La siguiente votación sobre "[[ voting.name ]]" ya ha finalizado, aquí puede ver los resultados que esta ha tenido. Al haber finalizado ya no puede ejercer su voto. Muchas gracias</h2>
+                <h2 class="heading">The next vote about "[[ voting.name ]]" has already finished, here you can see the results that it has had. Having finished, you can no longer exercise your vote. Thank you very much</h2>
 
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>Opción</th>
-                            <th>Puntuación</th>La siguiente votación sobre "[[ voting.name ]]" aún no ha comenzado, porfavor espere a que esta comienza para tener derecho a votar en ella. Muchas gracias.
-                            <th>Votos</th>
+                            <th>Option</th>
+                            <th>Score</th>The next vote about "[[ voting.name ]]" has not started yet, please wait until it starts to be eligible to vote on it. Thank you very much.
+                            <th>Votes</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -413,24 +413,25 @@ function increase2() {
 
         </div>
         <p id="holder">
-            La votación que está usted esta visualizando tiene como temática"[[ voting.name ]]".
-            Si se encuentra interesado sobre dicho tema puede buscar más información en una página
-            externa a decide, ya que aquí solo trataremos la puntuación y los votos que las correspondientes
-            opciones de votado obtengan. Reincidiendo en que la aplicación web decide únicamente es un sistema
-            mediante el que tramitar votos.  
+            The theme of the voting that you are viewing is"[[ voting.name ]]".
+            If you are interested in this topic you can find more information on a page
+            external to decide, since here we will only treat the score and the votes that the corresponding
+            voting options get. Reiterating that the web application only decides it is a system
+            through which to process votes.  
                
         </p>
+
         <div>
-            <a href="ale">
+            <a href="esp">
                 <b-button type="button" style="margin-top: 10px" variant="primary">
-                    Traducir a alemán
+                    Translate to Spanish
                 </b-button>
             </a>
         </div>
         <div>
-            <a href="eng">
+            <a href="ale">
                 <b-button type="button" style="margin-top: 10px" variant="primary">
-                    Traducir a inglés
+                    Translate to German
                 </b-button>
             </a>
         </div>

@@ -337,34 +337,34 @@ function increase2() {
 
 
 <button class="btn btn-primary" id="boton" onclick="ambas();
- " style="margin-top: 1%; margin-left:2%;margin-bottom:1%;">Opciones de accesibilidad </button>
+ " style="margin-top: 1%; margin-left:2%;margin-bottom:1%;">Zugangsmöglichkeiten </button>
     <div class="accesibilidad" id="acc">
-            <h3 style="margin-left: 1.5%;">Accesibilidad</h3>
+            <h3 style="margin-left: 1.5%;">Barrierefreiheit</h3>
             
-            <p  style="margin-left: 2%;">Tamaño de fuente</p> 
+            <p  style="margin-left: 2%;">Schriftgröße</p> 
             <div class="size-slider">
                 
                 <input type="range" id="value" min="15" max = "35" value = "15" onchange="increase()"/>
             </div>
-         <p  style="margin-left: 2%;">Espacio entre líneas</p> 
+         <p  style="margin-left: 2%;">Abstand zwischen den Zeilen</p> 
             <div class="size-slider2">
                 
                 <input type="range" id="value2" min="15" max = "35" onchange="increase2()"/>
             </div>
-        <p  style="margin-left: 2%;">Modo oscuro</p>
+        <p  style="margin-left: 2%;">dunkler Modus</p>
             <button class="switch" id="switch" onclick="myFunction()">
                 <span> <i class = "fas fa-sun"></i></span>
                 <span> <i class = "fas fa-moon"></i></span>
 
             </button>
-        <p  style="margin-left: 2%;">Modo escala de grises</p>
+        <p  style="margin-left: 2%;">Graustufenmodus</p>
 
             <button class="switch2" id="switch2" onclick="myFunction2()">
                 <span> <i class = "fas fa-sun"></i></span>
                 <span> <i class = "fas fa-moon"></i></span>
 
             </button>
-        <p  style="margin-left: 2%;">Modo de alto contraste</p>
+        <p  style="margin-left: 2%;">MModus mit hohem Kontrast</p>
 
             <button class="switch3" id="switch3" onclick="myFunction3()">
                 <span> <i class = "fas fa-sun"></i></span>
@@ -377,7 +377,7 @@ function increase2() {
 
         <!-- Navbar -->
         <b-navbar type="dark" variant="secondary">
-            <b-navbar-brand tag="h1" style="margin-left: 2%;">Decide, una app para sus votaciones y resultados</b-navbar-brand>
+            <b-navbar-brand tag="h1" style="margin-left: 2%;">Decide, Eine App für Ihre Stimmen und Ergebnisse</b-navbar-brand>
         </b-navbar>
 
         
@@ -388,17 +388,17 @@ function increase2() {
             
             <h3 >[[ voting.id ]] - [[ voting.name ]]</h3>
 
-            <h2 v-if="!voting.start_date">La siguiente votación sobre "[[ voting.name ]]" aún no ha comenzado, porfavor espere a que esta comienza para tener derecho a votar en ella. Muchas gracias.</h2>
-            <h2 v-else-if="!voting.end_date">La siguiente votación sobre "[[ voting.name ]]" se encuentra en curso y tiene derecho a votar en ella por lo que, tras tomar su decisión podrá votar.</h2>
+            <h2 v-if="!voting.start_date">Die nächste Abstimmung über "[[ voting.name ]]" hat noch nicht begonnen, bitte warten Sie, bis sie beginnt, um darüber abstimmen zu können. Vielen Dank.            </h2>
+            <h2 v-else-if="!voting.end_date">Die nächste Abstimmung über "[[ voting.name ]]" ist im Gange und Sie haben das Recht, darüber abzustimmen. Nachdem Sie Ihre Entscheidung getroffen haben, können Sie abstimmen.</h2>
             <div v-else>
-                <h2 class="heading">La siguiente votación sobre "[[ voting.name ]]" ya ha finalizado, aquí puede ver los resultados que esta ha tenido. Al haber finalizado ya no puede ejercer su voto. Muchas gracias</h2>
+                <h2 class="heading">Die nächste Abstimmung über "[[ voting.name ]]" bereits abgeschlossen ist, hier können Sie die Ergebnisse sehen, die es hatte. Danach können Sie Ihre Stimme nicht mehr ausüben. Vielen Dank</h2>
 
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>Opción</th>
-                            <th>Puntuación</th>La siguiente votación sobre "[[ voting.name ]]" aún no ha comenzado, porfavor espere a que esta comienza para tener derecho a votar en ella. Muchas gracias.
-                            <th>Votos</th>
+                            <th>Möglichkeit</th>
+                            <th>Stimmen</th>Die nächste Abstimmung über "[[ voting.name ]]" ist im Gange und Sie haben das Recht, darüber abzustimmen. Nachdem Sie Ihre Entscheidung getroffen haben, können Sie abstimmen.
+                            <th>Punkten</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -413,24 +413,24 @@ function increase2() {
 
         </div>
         <p id="holder">
-            La votación que está usted esta visualizando tiene como temática"[[ voting.name ]]".
-            Si se encuentra interesado sobre dicho tema puede buscar más información en una página
-            externa a decide, ya que aquí solo trataremos la puntuación y los votos que las correspondientes
-            opciones de votado obtengan. Reincidiendo en que la aplicación web decide únicamente es un sistema
-            mediante el que tramitar votos.  
+            Die angezeigte Abstimmung hat das Thema "[voting.name ]]".
+            Wenn Sie sich für dieses Thema interessieren, finden Sie weitere Informationen auf einer Seite
+            extern zu entscheiden, da wir hier nur die Punktzahl und die Stimmen behandeln werden, die dem entsprechen
+            Abstimmungsmöglichkeiten bekommen. Wiederholen, dass die Webanwendung nur entscheidet, dass sie ein System ist
+            über die Abstimmungen verarbeitet werden.
                
         </p>
         <div>
-            <a href="ale">
+            <a href="esp">
                 <b-button type="button" style="margin-top: 10px" variant="primary">
-                    Traducir a alemán
+                    Ins Spanische übersetzen
                 </b-button>
             </a>
         </div>
         <div>
             <a href="eng">
                 <b-button type="button" style="margin-top: 10px" variant="primary">
-                    Traducir a inglés
+                    Ins Englische übersetzen
                 </b-button>
             </a>
         </div>
