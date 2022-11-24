@@ -60,6 +60,11 @@ class VisualizerView(TemplateView):
                             bot.sendPhoto(chat_id=chat_id,
                                 photo=photo_file,
                                 caption='Aqui esta una grafica de pastel de la votacion')
+
+            with open('barras.pdf', 'rb') as InputFile:
+                            bot.sendDocument(chat_id=chat_id,
+                                document=InputFile,
+                                caption='Aqui esta una grafica de pastel de la votacion')
             # Crear un nuevo documento
             doc = aw.Document()
             # Crear un generador de documentos
