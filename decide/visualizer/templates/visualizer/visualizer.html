@@ -20,7 +20,11 @@
             <h1>[[ voting.id ]] - [[ voting.name ]]</h1>
 
             <h2 v-if="!voting.start_date">Votación no comenzada</h2>
-            <h2 v-else-if="!voting.end_date">Votación en curso
+            
+                <div v-else-if="!voting.end_date">
+                    <h2>Votación en curso</h2>
+                    <h2>Número total de votos: [[ voting.total_number_of_votes ]]</h2>
+                </div>
                 <div>
                     <table class="table table-bordered table-striped">
                         <thead>

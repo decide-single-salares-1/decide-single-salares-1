@@ -12,6 +12,7 @@ def start(modeladmin, request, queryset):
     for v in queryset.all():
         v.create_pubkey()
         v.start_date = timezone.now()
+        v.total_number_of_votes = 0
         v.save()
 
 
@@ -38,7 +39,7 @@ class QuestionAdmin(admin.ModelAdmin):
 class VotingAdmin(admin.ModelAdmin):
     list_display = ('name', 'start_date', 'end_date')
     readonly_fields = ('start_date', 'end_date', 'pub_key',
-                       'tally', 'postproc')
+                       'tally', 'postproc', 'total_number_of_votes')
     date_hierarchy = 'start_date'
     list_filter = (StartedFilter,)
     search_fields = ('name', )
