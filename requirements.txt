@@ -11,3 +11,4 @@ django-nose==1.4.6
 
 python-telegram-bot
 matplotlib
+pillow==2.2.1
