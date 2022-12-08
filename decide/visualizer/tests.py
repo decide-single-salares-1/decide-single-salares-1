@@ -24,3 +24,11 @@ class VisualizerTestCase(BaseTestCase):
         color_h1 = Color.from_string(driver.find_element(By.CSS_SELECTOR, ".heading").value_of_css_property('background-color'))
         
         assert color_h1.rgb == 'rgb(19, 136, 190)'
+
+    def test_check_aparece_boton_funciones_accesibilidad(self):
+        options = webdriver.FirefoxOptions()
+        options.headless = True
+        driver = webdriver.Firefox(options=options)
+        driver.get("http://localhost:8000/visualizer/1/")
+        
+        assert driver.find_element(By.ID, "boton").text == "Opciones de accesibilidad"
