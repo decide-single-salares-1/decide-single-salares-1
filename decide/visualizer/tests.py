@@ -32,3 +32,16 @@ class VisualizerTestCase(BaseTestCase):
         driver.get("http://localhost:8000/visualizer/1/")
         
         assert driver.find_element(By.ID, "boton").text == "Opciones de accesibilidad"
+
+    def test_check_aparecen_opciones_accesibilidad(self):	
+        options = webdriver.FirefoxOptions()
+        options.headless = True
+        driver = webdriver.Firefox(options=options)
+        driver.get("http://localhost:8000/visualizer/1/")
+        driver.find_element(By.ID, "boton").click()
+        driver.find_element(By.ID, "boton").click()
+
+        assert driver.find_element(By.CSS_SELECTOR, "#acc > h3").text == "Accesibilidad"
+        
+        
+        
