@@ -42,6 +42,17 @@ class VisualizerTestCase(BaseTestCase):
         driver.find_element(By.ID, "boton").click()
 
         assert driver.find_element(By.CSS_SELECTOR, "#acc > h3").text == "Accesibilidad"
+       
+    
+    def test_check_modo_oscuro(self):
+        options = webdriver.FirefoxOptions()
+        options.headless = True
+        driver = webdriver.Firefox(options=options)
+        driver.get("http://localhost:8000/visualizer/1/")
+        driver.find_element(By.ID, "boton").click()
+        driver.find_element(By.ID, "boton").click()       
+        modo_oscuro = Color.from_string(driver.find_element(By.CSS_SELECTOR, "body").value_of_css_property('background'))
         
+        assert modo_oscuro.hex == '#ebf2f7'
         
         
