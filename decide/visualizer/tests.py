@@ -8,6 +8,7 @@ from selenium.webdriver.support.color import Color
 
 
 class VisualizerTestCase(BaseTestCase):
+    
     def test_check_funciona_la_pagina(self):
         options = webdriver.FirefoxOptions()
         options.headless = True
@@ -16,6 +17,7 @@ class VisualizerTestCase(BaseTestCase):
         
         assert driver.find_element(By.CSS_SELECTOR, ".navbar-brand").text == "Decide, una app para sus votaciones y resultados"
 
+        
     def test_check_funcionan_estilos(self):
         options = webdriver.FirefoxOptions()
         options.headless = True
@@ -25,6 +27,7 @@ class VisualizerTestCase(BaseTestCase):
         
         assert color_h1.rgb == 'rgb(19, 136, 190)'
 
+        
     def test_check_aparece_boton_funciones_accesibilidad(self):
         options = webdriver.FirefoxOptions()
         options.headless = True
@@ -33,6 +36,7 @@ class VisualizerTestCase(BaseTestCase):
         
         assert driver.find_element(By.ID, "boton").text == "Opciones de accesibilidad"
 
+        
     def test_check_aparecen_opciones_accesibilidad(self):	
         options = webdriver.FirefoxOptions()
         options.headless = True
@@ -56,3 +60,14 @@ class VisualizerTestCase(BaseTestCase):
         assert modo_oscuro.hex == '#ebf2f7'
         
         
+     def test_check_modo_alto_contraste(self):
+        options = webdriver.FirefoxOptions()
+        options.headless = True
+        driver = webdriver.Firefox(options=options)
+        driver.get("http://localhost:8000/visualizer/1/")
+        driver.find_element(By.ID, "boton").click()
+        driver.find_element(By.ID, "boton").click()
+        driver.find_element(By.ID, "switch3").click()
+        color_tabla= Color.from_string(driver.find_element(By.CSS_SELECTOR, "thead th:nth-child(1)").value_of_css_property('color'))
+        
+        assert color_tabla.rgba == 'rgba(0, 0, 0, 1)'   
