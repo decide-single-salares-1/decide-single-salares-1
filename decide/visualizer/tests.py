@@ -16,4 +16,11 @@ class VisualizerTestCase(BaseTestCase):
         
         assert driver.find_element(By.CSS_SELECTOR, ".navbar-brand").text == "Decide, una app para sus votaciones y resultados"
 
-
+    def test_check_funcionan_estilos(self):
+        options = webdriver.FirefoxOptions()
+        options.headless = True
+        driver = webdriver.Firefox(options=options)
+        driver.get("http://localhost:8000/visualizer/1/")
+        color_h1 = Color.from_string(driver.find_element(By.CSS_SELECTOR, ".heading").value_of_css_property('background-color'))
+        
+        assert color_h1.rgb == 'rgb(19, 136, 190)'
