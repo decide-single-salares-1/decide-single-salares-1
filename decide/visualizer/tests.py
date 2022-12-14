@@ -60,7 +60,7 @@ class VisualizerTestCase(BaseTestCase):
         assert modo_oscuro.hex == '#ebf2f7'
         
         
-     def test_check_modo_alto_contraste(self):
+    def test_check_modo_alto_contraste(self):
         options = webdriver.FirefoxOptions()
         options.headless = True
         driver = webdriver.Firefox(options=options)
@@ -71,3 +71,12 @@ class VisualizerTestCase(BaseTestCase):
         color_tabla= Color.from_string(driver.find_element(By.CSS_SELECTOR, "thead th:nth-child(1)").value_of_css_property('color'))
         
         assert color_tabla.rgba == 'rgba(0, 0, 0, 1)'   
+
+    def test_traduccion_aleman_desde_esp(self):
+        options = webdriver.ChromeOptions()
+        options.headless = True
+        driver = webdriver.Chrome(options=options)
+        driver.get("http://localhost:8000/visualizer/1/")
+        driver.find_element(By.ID, "aleman").click()
+
+        assert driver.find_element(By.CSS_SELECTOR, ".navbar-brand").text == "Decide, Eine App für Ihre Stimmen und Ergebnisse"
