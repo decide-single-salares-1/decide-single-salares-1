@@ -73,10 +73,13 @@ class VisualizerTestCase(BaseTestCase):
         assert color_tabla.rgba == 'rgba(0, 0, 0, 1)'   
 
     def test_traduccion_aleman_desde_esp(self):
-        options = webdriver.ChromeOptions()
+        options = webdriver.FirefoxOptions()
         options.headless = True
-        driver = webdriver.Chrome(options=options)
+        driver = webdriver.Firefox(options=options)
         driver.get("http://localhost:8000/visualizer/1/")
+        driver.set_window_size(1294, 704)
         driver.find_element(By.ID, "aleman").click()
 
         assert driver.find_element(By.CSS_SELECTOR, ".navbar-brand").text == "Decide, Eine App für Ihre Stimmen und Ergebnisse"
+
+    
