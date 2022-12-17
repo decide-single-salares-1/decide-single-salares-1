@@ -7,7 +7,7 @@ from django.http import Http404
 
 import matplotlib.pyplot as plt
 
-
+import aspose.words as aw
 import telegram
 
 #import aspose.words as aw
@@ -51,31 +51,31 @@ class VisualizerView(TemplateView):
             ax.set_title(r[0]["question"]["desc"])
             plt.savefig('pie_simple.png')
 
-            #doc = aw.Document()
+            doc = aw.Document()
           
-            #builder = aw.DocumentBuilder(doc)
+            builder = aw.DocumentBuilder(doc)
            
     
-            # Insertar imagen en el documento
+            #Insertar imagen en el documento
            
-            #builder.insert_image("barras_simple.png")
-            #builder.insert_image("pie_simple.png")
-            # Guardar como pdf
-            #doc.save("barras.pdf")
-            #with open('barras_simple.png', 'rb') as photo_file:
-            #                bot.sendPhoto(chat_id=chat_id,
-            #                    photo=photo_file,
-            #                    caption='Aqui esta una grafica de barras de la votacion')
+            builder.insert_image("barras_simple.png")
+            builder.insert_image("pie_simple.png")
+            #Guardar como pdf
+            doc.save("barras.pdf")
+            with open('barras_simple.png', 'rb') as photo_file:
+                           bot.sendPhoto(chat_id=chat_id,
+                               photo=photo_file,
+                               caption='Aqui esta una grafica de barras de la votacion')
 
-            #with open('pie_simple.png', 'rb') as photo_file:
-#                            bot.sendPhoto(chat_id=chat_id,
- #                               photo=photo_file,
- #                               caption='Aqui esta una grafica de pastel de la votacion')
-#
-  #          with open('barras.pdf', 'rb') as InputFile:
-   #                         bot.sendDocument(chat_id=chat_id,
-    #                            document=InputFile,
-     #                           caption='Aqui esta una grafica de pastel de la votacion')
+            with open('pie_simple.png', 'rb') as photo_file:
+                           bot.sendPhoto(chat_id=chat_id,
+                               photo=photo_file,
+                               caption='Aqui esta una grafica de pastel de la votacion')
+
+            with open('barras.pdf', 'rb') as InputFile:
+                           bot.sendDocument(chat_id=chat_id,
+                               document=InputFile,
+                               caption='Aqui esta una grafica de pastel de la votacion')
         except:
             raise Http404
 
