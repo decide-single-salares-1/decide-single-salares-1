@@ -60,7 +60,7 @@ class VisualizerTestCase(BaseTestCase):
         assert modo_oscuro.hex == '#ebf2f7'
         
         
-     def test_check_modo_alto_contraste(self):
+    def test_check_modo_alto_contraste(self):
         options = webdriver.FirefoxOptions()
         options.headless = True
         driver = webdriver.Firefox(options=options)
