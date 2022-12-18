@@ -1,4 +1,5 @@
 from django.test import TestCase
+import requests
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
@@ -106,7 +107,38 @@ class VisualizerTestCase(BaseTestCase):
         # Comprueba si la pdf existe en la carpeta especificada tras visitar el visualizer
         assert os.path.exists(ruta_pdf)
         
+    
+    def test_send_photo_telegrambot(self):
+       
+        # Envía una imagen cualquiera de internet a través del bot de Telegram
+        payload = {'chat_id': '-1001777911940', 'photo': 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png'}
+        r = requests.post('https://api.telegram.org/bot5951418263:AAFhShQy3yYuk2SCjAF_E2YM6IO5XwYVqn4/sendPhoto', json=payload)
 
+        # Verifica que la respuesta sea correcta
+        self.assertEqual(r.status_code, 200)
+        self.assertEqual(r.json()['ok'], True)
+        self.assertEqual(r.json()['result']['photo'][0]['file_size'], 1029)
+
+    def test_send_message_telegrambot(self):
+        # Envía un mensaje a través del bot de Telegram
+        payload = {'chat_id': '-1001777911940', 'text': 'Test api telegram'}
+        r = requests.post('https://api.telegram.org/bot5951418263:AAFhShQy3yYuk2SCjAF_E2YM6IO5XwYVqn4/sendMessage', json=payload)
+
+        # Verifica que la respuesta sea correcta
+        self.assertEqual(r.status_code, 200)
+        self.assertEqual(r.json()['ok'], True)
+        self.assertEqual(r.json()['result']['text'], 'Test api telegram')
+
+    def test_send_pdf_telegrambot(self):
+        # Envía un archivo PDF de internet a través del bot de Telegram
+        file_url = 'https://example.com/file.pdf'
+        payload = {'chat_id': '-1001777911940', 'document': 'https://eqpro.es/wp-content/uploads/2018/11/Ejemplo.pdf'}
+        r = requests.post('https://api.telegram.org/bot5951418263:AAFhShQy3yYuk2SCjAF_E2YM6IO5XwYVqn4/sendDocument', json=payload)
+
+        # Verifica que la respuesta sea correcta
+        self.assertEqual(r.status_code, 200)
+        self.assertEqual(r.json()['ok'], True)
+        self.assertEqual(r.json()['result']['document']['mime_type'], 'application/pdf')
   
  
  
