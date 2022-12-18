@@ -95,6 +95,16 @@ class VisualizerTestCase(BaseTestCase):
         # Comprueba si la imagen existe en la carpeta especificada tras visitar el visualizer
         assert os.path.exists(ruta_imagen)
         
+    def test_creacion_de_PDF(self):
+        options = webdriver.FirefoxOptions()
+        options.headless = True
+        driver = webdriver.Firefox(options=options)
+        driver.get("http://localhost:8000/visualizer/1/")
+        #le damos la ruta de la pdf que se crea con las barras por lo que si existe es que se crean las barras
+        ruta_pdf = "barras.pdf"
+        
+        # Comprueba si la pdf existe en la carpeta especificada tras visitar el visualizer
+        assert os.path.exists(ruta_pdf)
         
 
   
