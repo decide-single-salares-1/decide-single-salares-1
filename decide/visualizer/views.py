@@ -12,14 +12,14 @@ import matplotlib.pyplot as plt
 
 import telegram
 
-#import aspose.words as aw
+# import aspose.words as aw
 
 
 from base import mods
 
             
 class VisualizerView(TemplateView):
-    template_name = 'visualizer.html'
+    template_name = 'visualizer/visualizer.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -35,10 +35,10 @@ class VisualizerView(TemplateView):
             context['voting'] = json.dumps(r[0])
             opci=[]
             votos=[]
-            for v in r[0]["postproc"]:
+            # for v in r[0]["postproc"]:
 
-                opci.append(v["option"]) 
-                votos.append(v["votes"]) 
+            #     opci.append(v["option"]) 
+            #     votos.append(v["votes"]) 
             fig, ax = plt.subplots()
 
             ax.set_ylabel('Votos')
@@ -54,31 +54,32 @@ class VisualizerView(TemplateView):
             ax.set_title(r[0]["question"]["desc"])
             plt.savefig('pie_simple.png')
 
-            #doc = aw.Document()
+        #     doc = aw.Document()
           
-            #builder = aw.DocumentBuilder(doc)
+        #     builder = aw.DocumentBuilder(doc)
            
     
-            # Insertar imagen en el documento
+            
            
-            #builder.insert_image("barras_simple.png")
-            #builder.insert_image("pie_simple.png")
-            # Guardar como pdf
-            #doc.save("barras.pdf")
-            #with open('barras_simple.png', 'rb') as photo_file:
-            #                bot.sendPhoto(chat_id=chat_id,
-            #                    photo=photo_file,
-            #                    caption='Aqui esta una grafica de barras de la votacion')
+        #     builder.insert_image("barras_simple.png")
+        #     builder.insert_image("pie_simple.png")
+            
 
-            #with open('pie_simple.png', 'rb') as photo_file:
-#                            bot.sendPhoto(chat_id=chat_id,
- #                               photo=photo_file,
- #                               caption='Aqui esta una grafica de pastel de la votacion')
-#
-  #          with open('barras.pdf', 'rb') as InputFile:
-   #                         bot.sendDocument(chat_id=chat_id,
-    #                            document=InputFile,
-     #                           caption='Aqui esta una grafica de pastel de la votacion')
+        #     doc.save("barras.pdf")
+        #     with open('barras_simple.png', 'rb') as photo_file:
+        #                    bot.sendPhoto(chat_id=chat_id,
+        #                        photo=photo_file,
+        #                        caption='Aqui esta una grafica de barras de la votacion')
+
+        #     with open('pie_simple.png', 'rb') as photo_file:
+        #                    bot.sendPhoto(chat_id=chat_id,
+        #                        photo=photo_file,
+        #                        caption='Aqui esta una grafica de pastel de la votacion')
+
+        #     with open('barras.pdf', 'rb') as InputFile:
+        #                    bot.sendDocument(chat_id=chat_id,
+        #                        document=InputFile,
+        #                        caption='Aqui esta una grafica de pastel de la votacion')
         except:
             raise Http404
 
