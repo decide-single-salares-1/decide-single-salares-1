@@ -139,6 +139,26 @@ class VisualizerTestCase(BaseTestCase):
         self.assertEqual(r.status_code, 200)
         self.assertEqual(r.json()['ok'], True)
         self.assertEqual(r.json()['result']['document']['mime_type'], 'application/pdf')
+        
+    def test_traduccion_aleman_desde_esp(self):
+        options = webdriver.FirefoxOptions()
+        options.headless = True
+        driver = webdriver.Firefox(options=options)
+        driver.get("http://localhost:8000/visualizer/1/")
+        driver.set_window_size(1294, 704)
+        driver.find_element(By.ID, "aleman").click()
+
+        assert driver.find_element(By.CSS_SELECTOR, ".navbar-brand").text == "Decide, Eine App für Ihre Stimmen und Ergebnisse"
+
+    def test_traduccion_ingles_desde_esp(self):
+        options = webdriver.FirefoxOptions()
+        options.headless = True
+        driver = webdriver.Firefox(options=options)
+        driver.get("http://localhost:8000/visualizer/1/")
+        driver.set_window_size(1294, 704)
+        driver.find_element(By.ID, "ingles").click()
+
+        assert driver.find_element(By.CSS_SELECTOR, ".navbar-brand").text == "Decide, an app for your votes and results"
   
  
  
