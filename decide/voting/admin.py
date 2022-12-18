@@ -47,5 +47,6 @@ class VotingAdmin(admin.ModelAdmin):
     actions = [ start, stop, tally ]
 
 
+admin.site.register(QuestionOption)
 admin.site.register(Voting, VotingAdmin)
 admin.site.register(Question, QuestionAdmin)

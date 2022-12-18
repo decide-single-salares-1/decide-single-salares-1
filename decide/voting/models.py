@@ -30,7 +30,7 @@ class QuestionOption(models.Model):
 
 class Voting(models.Model):
     name = models.CharField(max_length=200)
-    total_number_of_votes = models.IntegerField(blank=True, null=True)
+    total_number_of_votes = models.IntegerField(blank=True, null=True, default=0)
     desc = models.TextField(blank=True, null=True)
     question = models.ForeignKey(Question, related_name='voting', on_delete=models.CASCADE)
 

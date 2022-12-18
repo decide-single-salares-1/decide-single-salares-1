@@ -9,7 +9,7 @@ from base import mods
 
 
 class VisualizerView(TemplateView):
-    template_name = 'visualizer/visualizer.html'
+    template_name = 'visualizer.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -33,10 +33,13 @@ class VisualizerView(TemplateView):
                     b += context.get('b')
                     if total_number_of_votes != 0:
                         total_participation = (p + '{total_number_of_votes * 100}' + '%')
+                        aux_a = a / total_number_of_votes
+                        aux_b = b / total_number_of_votes
                     else:
                         total_participation = '%'
-                aux_a = a / total_number_of_votes
-                aux_b = b / total_number_of_votes
+                        aux_a = 0.0
+                        aux_b = 0.0
+                
 
             inforealtime = {'total_participation':total_participation, 'total_number_of_votes':total_number_of_votes, 'auxa':a, 'auxb':b}
             context['inforealtime'] = inforealtime
