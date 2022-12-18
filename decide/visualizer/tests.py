@@ -1,10 +1,12 @@
 from django.test import TestCase
+import requests
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from base.tests import BaseTestCase
 from selenium.webdriver.support.color import Color 
+import os
 
 
 class VisualizerTestCase(BaseTestCase):
@@ -60,7 +62,7 @@ class VisualizerTestCase(BaseTestCase):
         assert modo_oscuro.hex == '#ebf2f7'
         
         
-     def test_check_modo_alto_contraste(self):
+    def test_check_modo_alto_contraste(self):
         options = webdriver.FirefoxOptions()
         options.headless = True
         driver = webdriver.Firefox(options=options)
@@ -71,3 +73,72 @@ class VisualizerTestCase(BaseTestCase):
         color_tabla= Color.from_string(driver.find_element(By.CSS_SELECTOR, "thead th:nth-child(1)").value_of_css_property('color'))
         
         assert color_tabla.rgba == 'rgba(0, 0, 0, 1)'   
+    
+    def test_creacion_de_graficas_lineas(self):
+        options = webdriver.FirefoxOptions()
+        options.headless = True
+        driver = webdriver.Firefox(options=options)
+        driver.get("http://localhost:8000/visualizer/1/")
+        #le damos la ruta de la imagen que se crea con las barras por lo que si existe es que se crean las barras
+        ruta_imagen = "barras_simple.png"
+        
+        # Comprueba si la imagen existe en la carpeta especificada tras visitar el visualizer
+        assert os.path.exists(ruta_imagen)
+
+    def test_creacion_de_graficas_pastel(self):
+        options = webdriver.FirefoxOptions()
+        options.headless = True
+        driver = webdriver.Firefox(options=options)
+        driver.get("http://localhost:8000/visualizer/1/")
+        #le damos la ruta de la imagen que se crea con las barras por lo que si existe es que se crean las barras
+        ruta_imagen = "pie_simple.png"
+        
+        # Comprueba si la imagen existe en la carpeta especificada tras visitar el visualizer
+        assert os.path.exists(ruta_imagen)
+        
+    def test_creacion_de_PDF(self):
+        options = webdriver.FirefoxOptions()
+        options.headless = True
+        driver = webdriver.Firefox(options=options)
+        driver.get("http://localhost:8000/visualizer/1/")
+        #le damos la ruta de la pdf que se crea con las barras por lo que si existe es que se crean las barras
+        ruta_pdf = "barras.pdf"
+        
+        # Comprueba si la pdf existe en la carpeta especificada tras visitar el visualizer
+        assert os.path.exists(ruta_pdf)
+        
+    
+    def test_send_photo_telegrambot(self):
+       
+        # Envía una imagen cualquiera de internet a través del bot de Telegram
+        payload = {'chat_id': '-1001777911940', 'photo': 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png'}
+        r = requests.post('https://api.telegram.org/bot5951418263:AAFhShQy3yYuk2SCjAF_E2YM6IO5XwYVqn4/sendPhoto', json=payload)
+
+        # Verifica que la respuesta sea correcta
+        self.assertEqual(r.status_code, 200)
+        self.assertEqual(r.json()['ok'], True)
+        self.assertEqual(r.json()['result']['photo'][0]['file_size'], 1029)
+
+    def test_send_message_telegrambot(self):
+        # Envía un mensaje a través del bot de Telegram
+        payload = {'chat_id': '-1001777911940', 'text': 'Test api telegram'}
+        r = requests.post('https://api.telegram.org/bot5951418263:AAFhShQy3yYuk2SCjAF_E2YM6IO5XwYVqn4/sendMessage', json=payload)
+
+        # Verifica que la respuesta sea correcta
+        self.assertEqual(r.status_code, 200)
+        self.assertEqual(r.json()['ok'], True)
+        self.assertEqual(r.json()['result']['text'], 'Test api telegram')
+
+    def test_send_pdf_telegrambot(self):
+        # Envía un archivo PDF de internet a través del bot de Telegram
+        file_url = 'https://example.com/file.pdf'
+        payload = {'chat_id': '-1001777911940', 'document': 'https://eqpro.es/wp-content/uploads/2018/11/Ejemplo.pdf'}
+        r = requests.post('https://api.telegram.org/bot5951418263:AAFhShQy3yYuk2SCjAF_E2YM6IO5XwYVqn4/sendDocument', json=payload)
+
+        # Verifica que la respuesta sea correcta
+        self.assertEqual(r.status_code, 200)
+        self.assertEqual(r.json()['ok'], True)
+        self.assertEqual(r.json()['result']['document']['mime_type'], 'application/pdf')
+  
+ 
+ 
